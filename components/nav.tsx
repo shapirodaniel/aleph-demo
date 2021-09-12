@@ -3,7 +3,7 @@ import React from "react";
 const navLinks = [
   { text: "Home", path: "/home" },
   { text: "About", path: "/about" },
-  { text: "Blog", path: "/blog" },
+  { text: "Blog", path: "/blog/all" },
 ];
 
 export default function Nav() {

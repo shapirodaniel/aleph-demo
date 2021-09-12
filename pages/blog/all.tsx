@@ -1,5 +1,5 @@
 import React from "react";
-import BlogHeader from "../components/blog-header.tsx";
+import BlogHeader from "../../components/blog-header.tsx";
 
 export default function Blog() {
   return (
