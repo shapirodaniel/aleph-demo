@@ -1,6 +1,10 @@
 import React from "react";
 
-const navLinks = [{ text: "home" }, { text: "about" }, { text: "blog" }];
+const navLinks = [
+  { text: "Home", path: "/home" },
+  { text: "About", path: "/about" },
+  { text: "Blog", path: "/blog" },
+];
 
 export default function Nav() {
   return (
@@ -14,21 +18,23 @@ export default function Nav() {
             align-items: center;
             justify-content: flex-end;
           }
-          nav span {
+          nav a {
             font-size: 1.5em;
             color: black;
             margin-left: 1em;
             text-decoration: none;
           }
-          nav span:hover {
+          nav a:hover {
             cursor: pointer;
             text-decoration: underline;
           }
       `}
       </style>
       <nav>
-        {navLinks.map(({ text }, idx) => (
-          <span key={idx}>{text}</span>
+        {navLinks.map(({ text, path }, idx) => (
+          <a key={idx} href={path}>
+            {text}
+          </a>
         ))}
       </nav>
     </>

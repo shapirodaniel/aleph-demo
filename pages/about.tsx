@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Home() {
+export default function About() {
   return (
     <>
       <style>
@@ -14,7 +14,7 @@ export default function Home() {
           }
       `}
       </style>
-      <section>hi im home page</section>
+      <section>hi im about page</section>
     </>
   );
 }

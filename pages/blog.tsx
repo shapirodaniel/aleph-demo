@@ -1,6 +1,7 @@
 import React from "react";
+import BlogHeader from "../components/blog-header.tsx";
 
-export default function Home() {
+export default function Blog() {
   return (
     <>
       <style>
@@ -14,7 +15,8 @@ export default function Home() {
           }
       `}
       </style>
-      <section>hi im home page</section>
+      <BlogHeader />
+      <section>hi im blog page</section>
     </>
   );
 }
