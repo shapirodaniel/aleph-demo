@@ -11,10 +11,12 @@ export default function Layout({ children }: LayoutProps) {
         {`
           .layout {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: flex-start;
+            width: 100%;
             margin: 0 auto;
+            padding: 1em;
           }
       `}
       </style>
