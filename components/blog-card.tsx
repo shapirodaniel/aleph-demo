@@ -4,7 +4,13 @@ import { BlogPost, ParsedDateObject } from "../lib/interfaces.ts";
 import shortenPost from "../lib/post-shortener.js";
 import getParsedDate from "../lib/date-formatter.js";
 
-export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
+export default function BlogCard({
+  id,
+  title,
+  text,
+  src,
+  createdAt,
+}: BlogPost) {
   const { weekday, month, day, year }: ParsedDateObject =
     getParsedDate(createdAt);
 
@@ -41,11 +47,17 @@ export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
         .blog-card:hover img {
           filter: none;
         }
+        #blogTitle {
+          font-size: 1.4em;
+          font-weight: 500;
+          text-align: left;
+        }
         .blog-card p {
           height: 3em;
           width: 100%;
           padding: 1em;
           text-align: left;
+          font-style: italic;
         }
         .footer {
           height: auto;
@@ -76,6 +88,7 @@ export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
       <div className="blog-card">
         <img src={src} />
         <DateLine weekday={weekday} month={month} day={day} year={year} />
+        <div id="blogTitle">{title}</div>
         <p>{shortenPost(text)}</p>
         <div className="footer">
           <a href={`/blog/${id}`}>Read</a>

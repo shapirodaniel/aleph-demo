@@ -17,10 +17,11 @@ export default function Blog() {
       `}
       </style>
       <section>
-        {blogEntries.map(({ id, text, src, createdAt }: BlogPost) => (
+        {blogEntries.map(({ id, title, text, src, createdAt }: BlogPost) => (
           <BlogCard
             key={id}
             id={id}
+            title={title}
             text={text}
             src={src}
             createdAt={createdAt}

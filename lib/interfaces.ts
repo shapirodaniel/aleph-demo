@@ -1,5 +1,6 @@
 export interface BlogPost {
   id: number;
+  title: string;
   text: string;
   src: string;
   createdAt: Date;

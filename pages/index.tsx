@@ -42,8 +42,10 @@ export default function LandingPage() {
           border-radius: 50%;
           height: 20em;
           width: 20em;
+          min-width: 20em;
           overflow: hidden;
           border: 5px solid white;
+          margin-right: 2em;
         }
         .crop img {
           height: 22em;
@@ -57,14 +59,13 @@ export default function LandingPage() {
         }
         `}
       </style>
-      {/* overrides Layout parent to fill page */}
       <section className="container">
         <div id="hero">
           <p>Sell the problem you solve, not the product.</p>
         </div>
         <div id="center">
           <span className="crop">
-            <img src="/assets/corporate-person-2.jpg" alt="corporate-person" />
+            <img src="/assets/corporate-person.jpg" alt="corporate-person" />
           </span>
           <CorporateBlurb />
         </div>
