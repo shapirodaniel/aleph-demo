@@ -1,5 +1,5 @@
 import React from "react";
-import BlogPost from "../../lib/types.ts";
+import { BlogPost } from "../../lib/interfaces.ts";
 import { useRouter } from "https://deno.land/x/aleph/framework/react/mod.ts";
 
 // temp populate blog by choosing id from blogEntries
@@ -11,9 +11,7 @@ const selectBlogPost = (id: string) => {
 
 export default function FullPageBlog() {
   const { params } = useRouter();
-
   const blog = selectBlogPost(params.id);
-
   return (
     <>
       <div>hi im full page blog with id {blog?.id}</div>

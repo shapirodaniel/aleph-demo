@@ -1,50 +1,12 @@
 import React from "react";
-import BlogPost from "../lib/types.ts";
+import DateLine from "./date-line.tsx";
+import { BlogPost, ParsedDateObject } from "../lib/interfaces.ts";
 import shortenPost from "../lib/post-shortener.js";
 import getParsedDate from "../lib/date-formatter.js";
 
-interface ParsedDateObject {
-  weekday: string;
-  month: string;
-  day: number;
-  year: number;
-}
-
-const Date = ({ weekday, month, day, year }: ParsedDateObject) => (
-  <>
-    <style>
-      {`
-      .container {
-        display: flex;
-        width: 100%;
-        align-items: baseline;
-        justify-content: space-between;
-        padding: 1em;
-      }
-      #day-and-month {
-        font-size: 16px;
-      }
-      #day-and-month span {
-        font-weight: bold;
-      }
-      #year {
-        font-size: 16px;
-        opacity: .6
-      }
-      `}
-    </style>
-    <section className="container">
-      <div id="day-and-month">
-        <span>{weekday}</span>
-        {`, ${month} ${day}`}
-      </div>
-      <div id="year">{year}</div>
-    </section>
-  </>
-);
-
 export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
-  const { weekday, month, day, year } = getParsedDate(createdAt);
+  const { weekday, month, day, year }: ParsedDateObject =
+    getParsedDate(createdAt);
 
   return (
     <>
@@ -59,6 +21,7 @@ export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
           width: 300px;
           margin: 10px;
           border-radius: 5px;
+          border: 1px solid rgb(241, 241, 241);
         }
         .blog-card:hover {
           box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -112,7 +75,7 @@ export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
       </style>
       <div className="blog-card">
         <img src={src} />
-        <Date weekday={weekday} month={month} day={day} year={year} />
+        <DateLine weekday={weekday} month={month} day={day} year={year} />
         <p>{shortenPost(text)}</p>
         <div className="footer">
           <a href={`/blog/${id}`}>Read</a>

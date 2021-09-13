@@ -1,9 +1,9 @@
 import React from "react";
 
 const navLinks = [
-  { text: "Home", path: "/home" },
-  { text: "About", path: "/about" },
-  { text: "Blog", path: "/blog/all" },
+  { name: "Home", path: "/home" },
+  { name: "About", path: "/about" },
+  { name: "Blog", path: "/blog/all" },
 ];
 
 export default function Nav() {
@@ -25,6 +25,9 @@ export default function Nav() {
             margin-left: 1em;
             text-decoration: none;
           }
+          nav a.current {
+            text-decoration: underline;
+          }
           nav a:hover {
             cursor: pointer;
             text-decoration: underline;
@@ -32,9 +35,9 @@ export default function Nav() {
       `}
       </style>
       <nav>
-        {navLinks.map(({ text, path }, idx) => (
-          <a key={idx} href={path}>
-            {text}
+        {navLinks.map(({ name, path }, idx) => (
+          <a key={idx} href={path} rel="nav" data-active-className="current">
+            {name}
           </a>
         ))}
       </nav>
