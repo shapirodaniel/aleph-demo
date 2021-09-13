@@ -1,9 +1,51 @@
 import React from "react";
 import BlogPost from "../lib/types.ts";
-import shorten from "../lib/post-shortener.js";
-import formatDate from "../lib/date-formatter.js";
+import shortenPost from "../lib/post-shortener.js";
+import getParsedDate from "../lib/date-formatter.js";
+
+interface ParsedDateObject {
+  weekday: string;
+  month: string;
+  day: number;
+  year: number;
+}
+
+const Date = ({ weekday, month, day, year }: ParsedDateObject) => (
+  <>
+    <style>
+      {`
+      .container {
+        display: flex;
+        width: 100%;
+        align-items: baseline;
+        justify-content: space-between;
+        padding: 1em;
+      }
+      #day-and-month {
+        font-size: 16px;
+      }
+      #day-and-month span {
+        font-weight: bold;
+      }
+      #year {
+        font-size: 16px;
+        opacity: .6
+      }
+      `}
+    </style>
+    <section className="container">
+      <div id="day-and-month">
+        <span>{weekday}</span>
+        {`, ${month} ${day}`}
+      </div>
+      <div id="year">{year}</div>
+    </section>
+  </>
+);
 
 export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
+  const { weekday, month, day, year } = getParsedDate(createdAt);
+
   return (
     <>
       <style>
@@ -33,7 +75,7 @@ export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
           filter: none;
         }
         .blog-card p {
-          height: 40px;
+          height: 120px;
           width: 100%;
           padding: 1em;
           text-align: left;
@@ -62,10 +104,8 @@ export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
       </style>
       <div className="blog-card">
         <img src={src} />
-        <div>
-          <span>{formatDate(createdAt)}</span>
-        </div>
-        <p>{shorten(text)}</p>
+        <Date weekday={weekday} month={month} day={day} year={year} />
+        <p>{shortenPost(text)}</p>
         <div className="footer">
           <button>Read</button>
         </div>

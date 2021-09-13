@@ -1,5 +1,6 @@
 import React, { ComponentType } from "react";
 import Nav from "./components/nav.tsx";
+import "./style/index.css";
 
 export default function App({
   Page,
