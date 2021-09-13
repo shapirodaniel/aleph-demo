@@ -35,6 +35,7 @@ export default function FullPageBlog() {
           font-size: 3em;
         }
         #blogDate {
+          margin-top: 2em;
           text-align: right;
         }
         #blogContent {

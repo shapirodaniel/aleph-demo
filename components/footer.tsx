@@ -1,27 +1,26 @@
 import React from "react";
-import { footerLinks, logoLinks } from "../footer-links.js";
+import {
+  getInTouchLinks,
+  opportunitiesLinks,
+  logoLinks,
+} from "../footer-links.js";
 
-type FooterNameAndLinks = {
+interface FooterLinksObj {
   name: string;
   links: string[];
-};
+}
 
-export default function Footer() {
+const StackedLinks = ({ name, links }: FooterLinksObj) => {
   return (
     <>
       <style>
         {`
-        #footer {
-          height: 200px;
-          background-color: black;
-          margin-bottom: -1em;
-          color: white;
-        }
         .footerColumn {
           display: flex;
+          flex-wrap: wrap;
           flex-direction: column;
           align-items: flex-start;
-          justify-content: space-between;
+          justify-content: space-around;
         }
         .footerColumn span {
           font-weight: bold;
@@ -37,20 +36,62 @@ export default function Footer() {
         }
       `}
       </style>
+      <div className="footerColumn">
+        <span>{name}</span>
+        <br />
+        {links.map((item: string, idx: number) => (
+          <a href="" key={idx}>
+            {item}
+          </a>
+        ))}
+      </div>
+    </>
+  );
+};
+
+export default function Footer() {
+  return (
+    <>
+      <style>
+        {`
+        #footer {
+          height: 200px;
+          background-color: black;
+          margin-bottom: -1em;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+        }
+        .footerLinks {
+          padding: .5em;
+        }
+        .footerLinks img {
+          height: 32px;
+          width: 32px;
+          background: transparent;
+          margin: .5em;
+        }
+      `}
+      </style>
       <section id="footer">
-        <div id="footerLinks">
-          {footerLinks.map(({ name, links }: FooterNameAndLinks, idx) => (
-            <div key={idx} className="footerColumn">
-              <span>{name}</span>
-              {links.map((link: string, idx) => (
-                <a href="" key={idx}>
-                  {link}
-                </a>
-              ))}
-            </div>
+        <div className="footerLinks">
+          <StackedLinks
+            name={getInTouchLinks.name}
+            links={getInTouchLinks.links}
+          />
+        </div>
+        <div className="footerLinks">
+          <StackedLinks
+            name={opportunitiesLinks.name}
+            links={opportunitiesLinks.links}
+          />
+        </div>
+        <div className="footerLinks">
+          {logoLinks.map((src, idx) => (
+            <img key={idx} src={src} alt={src} />
           ))}
         </div>
-        <div></div>
       </section>
     </>
   );
