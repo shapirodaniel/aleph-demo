@@ -7,18 +7,18 @@ export default function LandingPage() {
     <>
       <style>
         {`
-        .container {
+        #landingContainer {
           width: 100vw;
           height: auto;
           margin: -1em -1em 0 -1em;
         }
-        .container > div {
+        #landingContainer > div {
           height: 600px;
           display: flex;
           align-items: center;
           justify-content: center;
         }
-        .container p {
+        #landingContainer p {
           width: 100%
           max-width: 600px;
           padding: 2em;
@@ -32,11 +32,14 @@ export default function LandingPage() {
           align-items: center;
           justify-content: center;
         }
-        #center {
+        #personAndBlurb {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           background-color: rgb(46, 93, 213);
           color: ghostwhite;
         }
-        .crop {
+        #crop {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -48,24 +51,38 @@ export default function LandingPage() {
           border: 5px solid white;
           margin-right: 2em;
         }
-        .crop img {
+        #crop img {
           height: 22em;
           width: auto;
           margin-left: 4em;
         }
-        #footer {
-          height: 200px;
-          background-color: black;
-          margin-bottom: -1em;
+        @media screen and (max-width: 400px){
+          #hero > p {
+            font-size: 2em;
+            padding: .3em;
+          }
+          #personAndBlurb {
+            flex-direction: column;
+          }
+          #crop {
+            height: 16em;
+            width: 16em;
+            min-width: 16em;
+            margin-right: 0;
+          }
+          #crop img {
+            height: 15em;
+            width: auto;
+          }
         }
         `}
       </style>
-      <section className="container">
+      <section id="landingContainer">
         <div id="hero">
           <p>Sell the problem you solve, not the product.</p>
         </div>
-        <div id="center">
-          <span className="crop">
+        <div id="personAndBlurb">
+          <span id="crop">
             <img src="/assets/corporate-person.jpg" alt="corporate-person" />
           </span>
           <CorporateBlurb />

@@ -15,7 +15,7 @@ const FancyQuotes = ({ color, copy }: FancyQuotesProps) => {
         font-style: italic;
         font-size: 8em;
         color: ${color};
-        width: 380px;
+        width: 2.5em;
         padding: 0;
         margin: 0;
         height: 1em;
@@ -31,8 +31,16 @@ const FancyQuotes = ({ color, copy }: FancyQuotesProps) => {
         font-size: 2.5em;
         padding-left: .5em;
         margin: 0;
-        width: 375px;
         text-align: center;
+      }
+      @media screen and (max-width: 400px){
+        #fancyQuoteCopy {
+          font-size: 2em;
+          padding-left: 0;
+        }
+        #left {
+          margin-left: -.3em;
+        }
       }
     `}
       </style>
@@ -63,6 +71,11 @@ export default function CorporateBlurb() {
           font-size: 1.5em;
           font-style: italic;
           text-align: right;
+        }
+        @media screen and (max-width: 400px) {
+          #signature {
+            font-size: 1em;
+          }
         }
       `}
       </style>
