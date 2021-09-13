@@ -17,6 +17,7 @@ export default function Nav() {
             display: flex;
             align-items: center;
             justify-content: flex-end;
+            padding: 1em;
           }
           nav a {
             font-size: 1.5em;

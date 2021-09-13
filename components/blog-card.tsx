@@ -43,7 +43,7 @@ const Date = ({ weekday, month, day, year }: ParsedDateObject) => (
   </>
 );
 
-export default function BlogCard({ text, src, createdAt }: BlogPost) {
+export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
   const { weekday, month, day, year } = getParsedDate(createdAt);
 
   return (
@@ -92,15 +92,19 @@ export default function BlogCard({ text, src, createdAt }: BlogPost) {
           align-items: center;
           justify-content: flex-end;  
         }
-        .footer button {
+        .footer a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           height: 32px;
           width: 80px;
           border-radius: 16px;
           border: transparent;
           background-color: darkgrey;
           color: ghostwhite;
+          text-decoration: none;
         }
-        .footer button:hover {
+        .footer a:hover {
           cursor: pointer;
           background-color: black;
         }
@@ -111,7 +115,7 @@ export default function BlogCard({ text, src, createdAt }: BlogPost) {
         <Date weekday={weekday} month={month} day={day} year={year} />
         <p>{shortenPost(text)}</p>
         <div className="footer">
-          <button>Read</button>
+          <a href={`/blog/${id}`}>Read</a>
         </div>
       </div>
     </>
