@@ -1,8 +1,9 @@
 import React from "react";
 import BlogPost from "../lib/types.ts";
 import shorten from "../lib/post-shortener.js";
+import formatDate from "../lib/date-formatter.js";
 
-export default function BlogCard({ id, text, src }: BlogPost) {
+export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
   return (
     <>
       <style>
@@ -26,11 +27,15 @@ export default function BlogCard({ id, text, src }: BlogPost) {
           width: 300px;
           height: 200px;
           border-radius: inherit;
+          filter: grayscale(80%);
+        }
+        .blog-card:hover img {
+          filter: none;
         }
         .blog-card p {
-          height: 160px;
+          height: 40px;
           width: 100%;
-          padding: 4px;
+          padding: 1em;
           text-align: left;
         }
         .footer {
@@ -57,6 +62,9 @@ export default function BlogCard({ id, text, src }: BlogPost) {
       </style>
       <div className="blog-card">
         <img src={src} />
+        <div>
+          <span>{formatDate(createdAt)}</span>
+        </div>
         <p>{shorten(text)}</p>
         <div className="footer">
           <button>Read</button>

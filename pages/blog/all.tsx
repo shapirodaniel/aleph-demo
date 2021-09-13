@@ -20,8 +20,14 @@ export default function Blog() {
       </style>
       <BlogHeader />
       <section>
-        {blogEntries.map(({ id, text, src }: BlogPost) => (
-          <BlogCard key={id} id={id} text={text} src={src} />
+        {blogEntries.map(({ id, text, src, createdAt }: BlogPost) => (
+          <BlogCard
+            key={id}
+            id={id}
+            text={text}
+            src={src}
+            createdAt={createdAt}
+          />
         ))}
       </section>
     </>
