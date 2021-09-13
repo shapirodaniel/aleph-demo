@@ -1,5 +1,5 @@
 import React from "react";
-import { BlogPost, ParsedDateObject } from "../../lib/interfaces.ts";
+import { BlogPost } from "../../lib/interfaces.ts";
 import { useRouter } from "https://deno.land/x/aleph/framework/react/mod.ts";
 import getParsedDate from "../../lib/date-formatter.js";
 
@@ -8,6 +8,11 @@ import blogEntries from "../../blog-entries.js";
 
 const selectBlogPost = (id: string) => {
   return blogEntries.find((blog: BlogPost) => blog.id === +id);
+};
+
+// render paragraphs from blog.text strings "...\n..."
+const splitContentAtNewline = (text: string): Array<string> => {
+  return text.split("\n");
 };
 
 export default function FullPageBlog() {
@@ -33,9 +38,12 @@ export default function FullPageBlog() {
           text-align: right;
         }
         #blogContent {
-          font-size: 1.6em;
+          font-size: 1.4em;
           line-height: 1.5em;
           padding: 1em;
+        }
+        #blogContent > p:not(:first-child) {
+          margin-top: .5em;
         }
       `}
       </style>
@@ -43,7 +51,11 @@ export default function FullPageBlog() {
         <div id="blogTitle">{blog?.title}</div>
         <div id="blogDate">{`${weekday} ${month} ${day}, ${year}`}</div>
       </header>
-      <p id="blogContent">{blog?.text || "oops, no blog post found"}</p>
+      <div id="blogContent">
+        {splitContentAtNewline(blog!.text).map((paragraph, idx) => (
+          <p key={idx}>{paragraph}</p>
+        )) || "oops, no blog post found"}
+      </div>
     </>
   );
 }
