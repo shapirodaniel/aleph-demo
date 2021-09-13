@@ -1,5 +1,4 @@
 import React from "react";
-import BlogHeader from "../../components/blog-header.tsx";
 import BlogCard from "../../components/blog-card.tsx";
 import blogEntries from "../../blog-entries.js";
 import BlogPost from "../../lib/types.ts";
@@ -10,15 +9,13 @@ export default function Blog() {
       <style>
         {`
           section {
-            height: 100%;
-            width: 100%;
             display: flex;
             align-items: center;
             justify-content: flex-start;
+            flex-wrap: wrap;
           }
       `}
       </style>
-      <BlogHeader />
       <section>
         {blogEntries.map(({ id, text, src, createdAt }: BlogPost) => (
           <BlogCard
