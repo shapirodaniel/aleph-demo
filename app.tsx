@@ -1,4 +1,5 @@
 import React, { ComponentType } from "react";
+import Layout from "./components/layout.tsx";
 import Nav from "./components/nav.tsx";
 import "./style/index.css";
 
@@ -15,7 +16,9 @@ export default function App({
         <meta name="viewport" content="width=device-width" />
       </head>
       <Nav />
-      <Page {...pageProps} />
+      <Layout>
+        <Page {...pageProps} />
+      </Layout>
     </main>
   );
 }
