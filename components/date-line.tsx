@@ -11,7 +11,7 @@ export default function DateLine({
     <>
       <style>
         {`
-      .container {
+      section {
         display: flex;
         width: 100%;
         align-items: baseline;
@@ -30,7 +30,7 @@ export default function DateLine({
       }
       `}
       </style>
-      <section className="container">
+      <section>
         <div id="day-and-month">
           <span>{weekday}</span>
           {`, ${month} ${day}`}

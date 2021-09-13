@@ -11,3 +11,9 @@ export interface ParsedDateObject {
   day: number;
   year: number;
 }
+
+export interface CorporateLogo {
+  id: number;
+  name: string;
+  src: string;
+}

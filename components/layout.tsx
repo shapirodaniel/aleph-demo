@@ -16,6 +16,7 @@ export default function Layout({ children }: LayoutProps) {
             justify-content: flex-start;
             width: 100%;
             margin: 0 auto;
+            margin-top: 4em;
             padding: 1em;
           }
       `}

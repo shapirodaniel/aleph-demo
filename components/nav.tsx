@@ -18,6 +18,11 @@ export default function Nav() {
             align-items: center;
             justify-content: flex-end;
             padding: 2em;
+            background-color: #FFFFFF;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
           }
           nav a {
             font-size: 1.5em;
