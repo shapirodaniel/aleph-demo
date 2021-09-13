@@ -18,7 +18,7 @@ export default function About() {
         p {
           width: 100%
           max-width: 600px;
-          padding: 0em 2em 1em 2em;
+          padding: .5em 2em 1em 2em;
           font-size: 3em;
           text-align: center;
         }
