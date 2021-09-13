@@ -1,6 +1,7 @@
 import React from "react";
-import { BlogPost } from "../../lib/interfaces.ts";
+import { BlogPost, ParsedDateObject } from "../../lib/interfaces.ts";
 import { useRouter } from "https://deno.land/x/aleph/framework/react/mod.ts";
+import getParsedDate from "../../lib/date-formatter.js";
 
 // temp populate blog by choosing id from blogEntries
 import blogEntries from "../../blog-entries.js";
@@ -12,10 +13,37 @@ const selectBlogPost = (id: string) => {
 export default function FullPageBlog() {
   const { params } = useRouter();
   const blog = selectBlogPost(params.id);
+  const { weekday, month, day, year } = getParsedDate(blog?.createdAt);
+
   return (
     <>
-      <div>hi im full page blog with id {blog?.id}</div>
-      <p>{blog?.text || "oops, no blog post found"}</p>
+      <style>
+        {`
+        #blogHeader {
+          background-color: black;
+          color: white;
+          padding: 2em;
+          width: 100%;
+          margin-bottom: 2em;
+        }
+        #blogTitle {
+          font-size: 3em;
+        }
+        #blogDate {
+          text-align: right;
+        }
+        #blogContent {
+          font-size: 1.6em;
+          line-height: 1.5em;
+          padding: 1em;
+        }
+      `}
+      </style>
+      <header id="blogHeader">
+        <div id="blogTitle">{blog?.title}</div>
+        <div id="blogDate">{`${weekday} ${month} ${day}, ${year}`}</div>
+      </header>
+      <p id="blogContent">{blog?.text || "oops, no blog post found"}</p>
     </>
   );
 }
