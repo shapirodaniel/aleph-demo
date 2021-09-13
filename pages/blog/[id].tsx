@@ -46,6 +46,13 @@ export default function FullPageBlog() {
         #blogContent > p:not(:first-child) {
           margin-top: .5em;
         }
+        @media screen and (max-width: 400px) {
+          #blogContent {
+            font-size: 1.5em;
+            line-height: 1.3em;
+            padding-top: 0;
+          }
+        }
       `}
       </style>
       <header id="blogHeader">

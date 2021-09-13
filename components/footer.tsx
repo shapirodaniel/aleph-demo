@@ -34,6 +34,14 @@ const StackedLinks = ({ name, links }: FooterLinksObj) => {
           cursor: pointer;
           text-decoration: underline;
         }
+        @media screen and (max-width: 400px) {
+          .footerColumn {
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: auto;
+          }
+        }
       `}
       </style>
       <div className="footerColumn">
@@ -55,13 +63,14 @@ export default function Footer() {
       <style>
         {`
         #footer {
-          height: 200px;
+          height: auto;
           background-color: black;
           margin-bottom: -1em;
           color: white;
           display: flex;
           align-items: center;
           justify-content: space-around;
+          padding: 2em 0 1em 0;
         }
         .footerLinks {
           padding: .5em;
@@ -71,6 +80,16 @@ export default function Footer() {
           width: 32px;
           background: transparent;
           margin: 1em;
+        }
+        @media screen and (max-width: 400px) {
+          #footer {
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+          }
+          .footerLinks {
+            margin-top: 1em;
+          }
         }
       `}
       </style>
