@@ -1,5 +1,6 @@
 import React from "react";
 import CorporateBlurb from "../components/corporate-blurb.tsx";
+import Footer from "../components/footer.tsx";
 
 export default function LandingPage() {
   return (
@@ -69,7 +70,7 @@ export default function LandingPage() {
           </span>
           <CorporateBlurb />
         </div>
-        <div id="footer"></div>
+        <Footer />
       </section>
     </>
   );
