@@ -9,7 +9,9 @@ export default function Blog() {
       <style>
         {`
         section {
+          margin: 0 auto;
           display: flex;
+          justify-content: center;
           flex-wrap: wrap;
         }
       `}
