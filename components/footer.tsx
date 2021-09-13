@@ -70,7 +70,7 @@ export default function Footer() {
           height: 32px;
           width: 32px;
           background: transparent;
-          margin: .5em;
+          margin: 1em;
         }
       `}
       </style>

@@ -12,10 +12,10 @@ export default function About() {
     <>
       <style>
         {`
-        section {
+        #about {
           width: 100%;
         }
-        p {
+        #about p {
           width: 100%
           max-width: 600px;
           padding: .5em 2em 1em 2em;
@@ -34,9 +34,15 @@ export default function About() {
           width: 12em;
           overflow: hidden;
         }
+        @media screen and (max-width: 400px) {
+          #about p {
+            font-size: 1.4em;
+            padding: 2em;
+          }
+        }
       `}
       </style>
-      <section>
+      <section id="about">
         <p>Companies love working with us, because we love companies.</p>
         <div id="logos">
           {corporateLogos.map(({ id, name, src }: CorporateLogo) => (
