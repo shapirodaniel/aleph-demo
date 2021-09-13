@@ -1,4 +1,5 @@
 import React from "react";
+import CorporateBlurb from "../components/corporate-blurb.tsx";
 
 export default function LandingPage() {
   return (
@@ -10,31 +11,44 @@ export default function LandingPage() {
           height: auto;
           margin: -1em -1em 0 -1em;
         }
-        .container div {
+        .container > div {
           height: 600px;
-        }
-        .container p {
-          width: 100%
-          max-width: 600px;
-          padding: 0em 2em 1em 2em;
-          font-size: 4em;
-          text-align: center;
-          color: ghostwhite;
-        }
-        #top {
-          background-color: rgb(46, 93, 213);
           display: flex;
           align-items: center;
           justify-content: center;
         }
-        #whitespace {
-          background-color: transparent;
+        .container p {
+          width: 100%
+          max-width: 600px;
+          padding: 2em;
+          font-size: 4em;
+          text-align: center;
+          color: black;
         }
-        #whitespace img {
-          border-radius: 50px;
-          height: 50%;
-          width: auto;
+        #hero {
+          background-color: transparent;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        #center {
+          background-color: rgb(46, 93, 213);
+          color: ghostwhite;
+        }
+        .crop {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          height: 20em;
+          width: 20em;
           overflow: hidden;
+          border: 5px solid white;
+        }
+        .crop img {
+          height: 22em;
+          width: auto;
+          margin-left: 4em;
         }
         #footer {
           height: 200px;
@@ -45,11 +59,14 @@ export default function LandingPage() {
       </style>
       {/* overrides Layout parent to fill page */}
       <section className="container">
-        <div id="top">
+        <div id="hero">
           <p>Sell the problem you solve, not the product.</p>
         </div>
-        <div id="whitespace">
-          <img src="/assets/corporate-person.jpg" alt="corporate-person" />
+        <div id="center">
+          <span className="crop">
+            <img src="/assets/corporate-person-2.jpg" alt="corporate-person" />
+          </span>
+          <CorporateBlurb />
         </div>
         <div id="footer"></div>
       </section>
