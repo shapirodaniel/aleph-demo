@@ -43,7 +43,7 @@ const Date = ({ weekday, month, day, year }: ParsedDateObject) => (
   </>
 );
 
-export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
+export default function BlogCard({ text, src, createdAt }: BlogPost) {
   const { weekday, month, day, year } = getParsedDate(createdAt);
 
   return (
@@ -58,8 +58,10 @@ export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
           height: auto;
           width: 300px;
           margin: 10px;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
+          border-radius: 5px;
+        }
+        .blog-card:hover {
+          box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
         }
         .blog-card img {
           position: relative;
@@ -69,21 +71,23 @@ export default function BlogCard({ id, text, src, createdAt }: BlogPost) {
           width: 300px;
           height: 200px;
           border-radius: inherit;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
           filter: grayscale(80%);
         }
         .blog-card:hover img {
           filter: none;
         }
         .blog-card p {
-          height: 120px;
+          height: 3em;
           width: 100%;
           padding: 1em;
           text-align: left;
         }
         .footer {
-          height: 36px;
+          height: auto;
           width: 100%;
-          padding: 2px 0;
+          padding: 1em;
           display: flex;
           align-items: center;
           justify-content: flex-end;  
