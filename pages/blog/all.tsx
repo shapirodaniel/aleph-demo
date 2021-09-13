@@ -1,5 +1,8 @@
 import React from "react";
 import BlogHeader from "../../components/blog-header.tsx";
+import BlogCard from "../../components/blog-card.tsx";
+import blogEntries from "../../blog-entries.js";
+import BlogPost from "../../lib/types.ts";
 
 export default function Blog() {
   return (
@@ -16,7 +19,11 @@ export default function Blog() {
       `}
       </style>
       <BlogHeader />
-      <section>hi im blog page</section>
+      <section>
+        {blogEntries.map(({ id, text, src }: BlogPost) => (
+          <BlogCard key={id} id={id} text={text} src={src} />
+        ))}
+      </section>
     </>
   );
 }

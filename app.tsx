@@ -9,7 +9,7 @@ export default function App({
   pageProps: any;
 }) {
   return (
-    <main style={{ height: "100vh", width: "100vw", padding: 0 }}>
+    <main>
       <head>
         <meta name="viewport" content="width=device-width" />
       </head>
