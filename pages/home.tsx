@@ -1,5 +1,6 @@
 import React from "react";
+import LandingPage from "./index.tsx";
 
 export default function Home() {
-  return <section>hi im home page</section>;
+  return <LandingPage />;
 }
