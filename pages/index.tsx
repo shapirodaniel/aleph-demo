@@ -21,7 +21,7 @@ export default function LandingPage() {
         #landingContainer p {
           width: 100%
           max-width: 600px;
-          padding: 2em;
+          padding: 0 2em 2em 2em;
           font-size: 4em;
           text-align: center;
           color: black;
