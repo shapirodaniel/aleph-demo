@@ -3,7 +3,7 @@ import {
   getInTouchLinks,
   opportunitiesLinks,
   logoLinks,
-} from "../footer-links.js";
+} from "../src/footer-links.js";
 
 interface FooterLinksObj {
   name: string;

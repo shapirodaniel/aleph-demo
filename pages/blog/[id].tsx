@@ -1,14 +1,9 @@
 import React from "react";
-import { BlogPost } from "../../lib/interfaces.ts";
-import { useRouter } from "https://deno.land/x/aleph/framework/react/mod.ts";
+import {
+  useDeno,
+  useRouter,
+} from "https://deno.land/x/aleph@v0.3.0-beta.12/framework/react/mod.ts";
 import getParsedDate from "../../lib/date-formatter.js";
-
-// temp populate blog by choosing id from blogEntries
-import blogEntries from "../../blog-entries.js";
-
-const selectBlogPost = (id: string) => {
-  return blogEntries.find((blog: BlogPost) => blog.id === +id);
-};
 
 // render paragraphs from blog.text strings "...\n..."
 const splitContentAtNewline = (text: string): Array<string> => {
@@ -17,8 +12,15 @@ const splitContentAtNewline = (text: string): Array<string> => {
 
 export default function FullPageBlog() {
   const { params } = useRouter();
-  const blog = selectBlogPost(params.id);
-  const { weekday, month, day, year } = getParsedDate(blog?.createdAt);
+
+  const { blog } = useDeno(async () => {
+    return await (
+      await fetch(`http://localhost:8080/api/blog/${params.id}`)
+    ).json();
+  });
+
+  // convert blog.createdAt as SSR returns stringified UTC timestamp
+  const { weekday, month, day, year } = getParsedDate(new Date(blog.createdAt));
 
   return (
     <>
