@@ -4,9 +4,12 @@ import { BlogPost } from "../../lib/interfaces.ts";
 import { useDeno } from "https://deno.land/x/aleph@v0.3.0-beta.12/framework/react/mod.ts";
 
 export default function Blog() {
-  const { blogEntries } = useDeno(async () => {
-    return await (await fetch(`http://localhost:8080/api/blog/all`)).json();
-  });
+  const { blogEntries } = useDeno(
+    async () => {
+      return await (await fetch(`http://localhost:8080/api/blog/all`)).json();
+    },
+    { revalidate: 1 }
+  );
 
   return (
     <>

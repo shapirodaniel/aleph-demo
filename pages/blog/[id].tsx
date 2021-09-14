@@ -4,20 +4,19 @@ import {
   useRouter,
 } from "https://deno.land/x/aleph@v0.3.0-beta.12/framework/react/mod.ts";
 import getParsedDate from "../../lib/date-formatter.js";
-
-// render paragraphs from blog.text strings "...\n..."
-const splitContentAtNewline = (text: string): Array<string> => {
-  return text.split("\n");
-};
+import splitContentAtNewline from "../../lib/split-content.ts";
 
 export default function FullPageBlog() {
   const { params } = useRouter();
 
-  const { blog } = useDeno(async () => {
-    return await (
-      await fetch(`http://localhost:8080/api/blog/${params.id}`)
-    ).json();
-  });
+  const { blog } = useDeno(
+    async () => {
+      return await (
+        await fetch(`http://localhost:8080/api/blog/${params.id}`)
+      ).json();
+    },
+    { revalidate: 1 }
+  );
 
   // convert blog.createdAt as SSR returns stringified UTC timestamp
   const { weekday, month, day, year } = getParsedDate(new Date(blog.createdAt));
@@ -58,13 +57,15 @@ export default function FullPageBlog() {
       `}
       </style>
       <header id="blogHeader">
-        <div id="blogTitle">{blog?.title}</div>
+        <div id="blogTitle">{blog.title}</div>
         <div id="blogDate">{`${weekday} ${month} ${day}, ${year}`}</div>
       </header>
       <div id="blogContent">
-        {splitContentAtNewline(blog!.text).map((paragraph, idx) => (
-          <p key={idx}>{paragraph}</p>
-        )) || "oops, no blog post found"}
+        {splitContentAtNewline(blog.text).map(
+          (paragraph: string, idx: number) => (
+            <p key={idx}>{paragraph}</p>
+          )
+        )}
       </div>
     </>
   );
