@@ -32,6 +32,7 @@ const FancyQuotes = ({ color, copy }: FancyQuotesProps) => {
         padding-left: .5em;
         margin: 0;
         text-align: center;
+        color: ${color};
       }
       @media screen and (max-width: 400px){
         #fancyQuoteCopy {
