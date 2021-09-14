@@ -31,8 +31,7 @@ export default function Blog() {
             title={title}
             text={text}
             src={src}
-            // convert Date as Deno fetch returns stringified val since props originate from server and are passed via SSR
-            createdAt={new Date(createdAt)}
+            createdAt={createdAt}
           />
         ))}
       </section>

@@ -18,8 +18,7 @@ export default function FullPageBlog() {
     { revalidate: 1 }
   );
 
-  // convert blog.createdAt as SSR returns stringified UTC timestamp
-  const { weekday, month, day, year } = getParsedDate(new Date(blog.createdAt));
+  const { weekday, month, day, year } = getParsedDate(blog.createdAt);
 
   return (
     <>
