@@ -9,8 +9,8 @@ export interface BlogPost {
 export interface ParsedDateObject {
   weekday: string;
   month: string;
-  day: number;
-  year: number;
+  day: string;
+  year: string;
 }
 
 export interface CorporateLogo {
